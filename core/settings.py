@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-)8zqju!hrr86zg+%o&%q&v22r36bxx*b=&@+@68%mt^c+(s7^i
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog',
     'rest_framework',
-    'taggit'
+    'taggit',
+    'rest_framework.authtoken',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -73,9 +75,14 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'core.wsgi.application'
 
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'], 
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 5
+}
 [
     'rest_framework.authentication.SessionAuthentication',
-    'rest_framework.authentication.BasicAuthentication'
+    'rest_framework.authentication.BasicAuthentication',
 ]
 
 # Database

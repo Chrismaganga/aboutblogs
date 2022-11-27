@@ -1,8 +1,10 @@
+from site import USER_BASE
 from django.db import models
-from django.contrib.auth.models import User
 from django.urls import reverse
 from django.utils import timezone
 from taggit.managers import TaggableManager
+# from datetime import datetime, timezone
+
 
 
 class PublishedManager(models.Manager):
@@ -61,4 +63,15 @@ class Comment(models.Model):
         return 'Comment by {} on {}'.format(self.name, self.post)
 
 
+    # @property
+    # def age(self):
+    #     return datetime.now(tz=timezone.utc) - self.created_at
+
+    # @property
+    # def age_days(self):
+    #     return self.age.days
+
+    # @property
+    # def age_seconds(self):
+    #     return self.age.seconds
 
